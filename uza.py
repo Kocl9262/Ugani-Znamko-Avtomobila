@@ -1,18 +1,26 @@
 # -*- coding: utf-8 -*-
 from random import randint
+from avtomobili import cars
 
+vprasanje = "da"
 
-class Car():
-    def __init__(self, znamka, model):
-        self.znamka = znamka
-        self.model = model
+while vprasanje != "ne":
+    vprasanje = raw_input("Želiš preveriti kako dobro poznaš avtomobile? (da/ne): ")
 
-car1 = Car(znamka="Fiat", model="Punto")
-car2 = Car(znamka="Renault", model="Senic")
+    if vprasanje == "da":
+        rnd = randint(0, len(cars) - 1)
 
-cars = [car1, car2]
+        print("Znamka avtomobila " + cars[rnd].model + " je: ")
+        odgovor = raw_input(">: ")
 
-rnd = randint(0, 1)
-print rnd
+        if odgovor == cars[rnd].znamka:
+            print("Pravilen odgovor!")
 
-print(cars[rnd].model)
+        else:
+            print("Napačen odgovor")
+            print("Pravilen odgovor je " + cars[rnd].znamka)
+
+    else:
+        print("----------------------------------------------------")
+        print("Odločil si se, da ne želiš več igrati")
+        break
